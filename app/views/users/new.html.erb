@@ -1,5 +1,9 @@
 <h1> Hi from Users#new </h1>
 
+<%= form_tag("/users", method: "post") do %>
+
+<% end %>
+
 <form accept-charset="UTF-8" action="/users" method="post">
   <label for="username">username:</label><br/>
   <input type="text" id="username" name="user[username]"><br/>
