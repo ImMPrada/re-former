@@ -1,5 +1,6 @@
 <h1> Hi from Users#new </h1>
 
+
 <%= form_tag("/users", method: "post") do %>
   <%= label_tag("user[username]", "username:") %>
   <br/>
@@ -15,4 +16,21 @@
   <br/>
   <br/>
   <%= submit_tag("Create usser account") %>
+<% end %>
+
+<%= form_with model: @user do |f| %>
+  <%= f.label :username, 'username:' %>
+  <br/>
+  <%= f.text_field :username, {placeholder: UsersController::USERNAME_PLACEHOLDER} %>
+  <br/>
+  <%= f.label :email, 'e-mail:' %>
+  <br/>
+  <%= f.text_field :email, {placeholder: UsersController::EMAIL_PLACEHOLDER} %>
+  <br/>
+  <%= f.label :password, 'password:' %>
+  <br/>
+  <%= f.password_field :password, {placeholder: UsersController::PASSWORD_PLACEHOLDER} %>
+  <br/>
+  <br/>
+  <%= f.submit 'Create user account' %>
 <% end %>
