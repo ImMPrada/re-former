@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  def new; end
+  USERNAME_PLACEHOLDER = 'write how you wanna be called'
+  PASSWORD_PLACEHOLDER = 'numbers and letters only'
+  EMAIL_PLACEHOLDER = 'example@example.com'
+
+  def new
+    @user = User.new
+  end
 
   def create
     @user = User.new(user_params)
