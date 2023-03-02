@@ -1,23 +1,5 @@
 <h1> Hi from Users#new </h1>
 
-
-<%= form_tag("/users", method: "post") do %>
-  <%= label_tag("user[username]", "username:") %>
-  <br/>
-  <%= text_field_tag("user[username]") %>
-  <br/>
-  <%= label_tag("user[email]", "e-mail:") %>
-  <br/>
-  <%= text_field_tag("user[email]") %>
-  <br/>
-  <%= label_tag("user[password]", "password:") %>
-  <br/>
-  <%= password_field_tag("user[password]") %>
-  <br/>
-  <br/>
-  <%= submit_tag("Create usser account") %>
-<% end %>
-
 <%= form_with model: @user do |f| %>
   <%= f.label :username, 'username:' %>
   <br/>
