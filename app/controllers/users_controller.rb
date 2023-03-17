@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  USERNAME_PLACEHOLDER = 'write how you wanna be called'
-  PASSWORD_PLACEHOLDER = 'numbers and letters only'
-  EMAIL_PLACEHOLDER = 'example@example.com'
+  USERNAME_PLACEHOLDER = 'write how you wanna be called'.freeze
+  PASSWORD_PLACEHOLDER = 'numbers and letters only'.freeze
+  EMAIL_PLACEHOLDER = 'example@example.com'.freeze
+
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -11,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to new_user_path
+      redirect_to users_url
     else
       render :new, status: :unprocessable_entity
     end
