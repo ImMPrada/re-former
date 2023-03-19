@@ -3,7 +3,6 @@
 <turbo-frame id="<%= dom_id @user %>">
   <%= form_with(model: @user, data: {turbo: false}) do |f|%>
     <%= render partial: 'form_fields', locals: { f: f } %>
-    <%= f.password_field :password, {placeholder: UsersController::PASSWORD_PLACEHOLDER} %>
     <%= f.submit 'Update user account' %>
   <% end %>
 </turbo-frame>

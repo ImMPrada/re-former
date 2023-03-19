@@ -25,6 +25,16 @@ class UsersController < ApplicationController
     @user = User.find(user_id)
   end
 
+  def update
+    @user = User.find(user_id)
+
+    if @user.update(user_params)
+      redirect_to users_url
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     User.find(destroy_id).destroy
 
