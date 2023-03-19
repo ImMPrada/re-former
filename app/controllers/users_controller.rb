@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(user_id)
 
     if @user.update(user_params)
-      redirect_to users_url
+      redirect_to users_path
     else
       render :edit, status: :unprocessable_entity
     end
