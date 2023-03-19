@@ -1,9 +1,11 @@
-<h1>New user</h1>
+<div class="w-3/5 flex flex-col mx-auto">
+  <h1 class="min-w-full">New user</h1>
 
-<div class="w-3/5">
-  <%= form_with(model: @user, data: {turbo: false}) do |f|%>
+  <%= form_with(model: @user, data: {turbo: false}, class: "min-w-full") do |f|%>
     <%= render partial: 'form_fields', locals: { f: f } %>
-    <%= f.password_field :password, {placeholder: UsersController::PASSWORD_PLACEHOLDER} %>
+    <%= f.label :password, 'password:' %>
+    <%= f.password_field :password, {placeholder: UsersController::PASSWORD_PLACEHOLDER, class: 'min-w-full'} %>
     <%= f.submit 'Create user account' %>
   <% end %>
 </div>
+
