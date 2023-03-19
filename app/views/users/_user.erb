@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <turbo-frame id="<%= dom_id user %>">
+    <%= user.username %>
+    <%= user.email %>
+    <%= link_to "Edit", edit_user_path(user),
+              class: "btn bg-gray-100"
+    %>
+  </turbo-frame>
+<% end %>

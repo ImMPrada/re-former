@@ -21,9 +21,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(user_id)
+  end
+
+  def destroy
+    User.find(destroy_id).destroy
+
+    reload
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def user_id
+    params.require(:id)
   end
 end

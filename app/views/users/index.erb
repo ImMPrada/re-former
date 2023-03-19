@@ -1,15 +1,9 @@
-<h1> Hi from Users#index </h1>
+<h1> Hello, existing users: </h1>
 
 <% if @users.empty? %>
   <h2>THERE ARE NO USERS</h2>
 <% end %>
 
-<% @users.each do |user| %>
-  <p>
-    <%= user.username %>
-    </br>
-    <%= user.email %>
-  </p>
-<% end %>
+<%= render @users %>
 
 <%= link_to 'Create new user', new_user_path %>
