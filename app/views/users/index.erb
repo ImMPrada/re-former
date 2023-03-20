@@ -1,11 +1,11 @@
-<h1 class="font-bold text-2xl block">Task Manager</h1>
+<h1 class="font-bold text-2xl block">EXISTING USERS</h1>
 
 <% if @users.empty? %>
-  <h2 class="text-l block">THERE ARE NO USERS</h2>
+  <h2 class="text-l pt-8 text-red-500">THERE ARE NO USERS</h2>
 <% end %>
 
 <div class="m-4">
   <%= render @users %>
 </div>
 
-<%= link_to 'Create new user', new_user_path %>
+<%= link_to 'Create new user', new_user_path, { class: 'btn-goahead'} %>
