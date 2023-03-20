@@ -1,8 +1,12 @@
-<turbo-frame id="<%= dom_id user %>">
-  <%= user.username %>
-  <%= user.email %>
-  <%= link_to "Edit", edit_user_path(user),
-            class: "btn bg-gray-100"
-  %>
-  </br>
+<turbo-frame id="<%= dom_id user %>" class="flex justify-between items-center">
+  <div>
+    <%= user.username %>
+    </br>
+    <%= user.email %>
+  </div>
+  <div>
+    <%= link_to "Edit", edit_user_path(user),
+              class: "btn bg-gray-100"
+    %>
+  </div>
 </turbo-frame>

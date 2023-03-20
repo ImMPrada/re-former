@@ -1,8 +1,10 @@
-<h1>HOOLIIIIII</h1>
+<div class="w-3/5 flex flex-col mx-auto">
+  <h1 class="min-w-full">Edit user</h1>
 
-<turbo-frame id="<%= dom_id @user %>">
-  <%= form_with(model: @user, data: {turbo: false}) do |f|%>
-    <%= render partial: 'form_fields', locals: { f: f } %>
-    <%= f.submit 'Update user account' %>
-  <% end %>
-</turbo-frame>
+  <turbo-frame id="<%= dom_id @user %>">
+    <%= form_with(model: @user, data: {turbo: false}, class: "min-w-full") do |f|%>
+      <%= render partial: 'form_fields', locals: { f: f } %>
+      <%= f.submit 'Update user account' %>
+    <% end %>
+  </turbo-frame>
+</div>
