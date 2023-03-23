@@ -30,14 +30,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.update(@user,
-                                partial: 'users/user',
-                                locals: { user: @user })
-          ]
-        end
-        format.html { redirect_to users_path, notice: "Message was successfully updated." }
+        replace_user(format)
+        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
       else
         format.html { redirect_to users_path }
       end
@@ -51,6 +45,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def replace_user(format)
+    format.turbo_stream do
+      render turbo_stream: [
+        turbo_stream.replace(@user,
+                             partial: 'user',
+                             locals: { user: @user })
+      ]
+    end
+  end
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
