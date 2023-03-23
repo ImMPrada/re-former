@@ -28,10 +28,19 @@ class UsersController < ApplicationController
   def update
     @user = User.find(user_id)
 
-    if @user.update(user_params)
-      redirect_to users_path
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @user.update(user_params)
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update(@user,
+                                partial: 'users/user',
+                                locals: { user: @user })
+          ]
+        end
+        format.html { redirect_to users_path, notice: "Message was successfully updated." }
+      else
+        format.html { redirect_to users_path }
+      end
     end
   end
 

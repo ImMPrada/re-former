@@ -2,7 +2,7 @@
   <h1 class="min-w-full">Edit user</h1>
 
   <turbo-frame id="<%= dom_id @user %>">
-    <%= form_with(model: @user, data: {turbo: false}, class: "min-w-full") do |f|%>
+    <%= form_with(model: @user, class: "min-w-full") do |f|%>
       <%= render partial: 'form_fields', locals: { f: f } %>
       <%= f.submit 'Update user account', { class: 'btn-goahead mt-4'} %>
     <% end %>
