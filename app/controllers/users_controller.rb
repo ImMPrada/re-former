@@ -39,9 +39,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(destroy_id).destroy
+    @user = User.find(user_id)
 
-    reload
+    respond_to do |format|
+      if @user.destroy
+        remove_user(format)
+      else
+        format.html { redirect_to users_path }
+      end
+    end
   end
 
   private
@@ -52,6 +58,30 @@ class UsersController < ApplicationController
         turbo_stream.replace(@user,
                              partial: 'user',
                              locals: { user: @user })
+      ]
+    end
+  end
+
+  def remove_user(format)
+    @users = User.all
+
+    if @users.empty?
+      replace_users_list(format)
+    else
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.remove(@user)
+        ]
+      end
+    end
+  end
+
+  def replace_users_list(format)
+    format.turbo_stream do
+      render turbo_stream: [
+        turbo_stream.replace(:users_list,
+                             partial: 'users',
+                             locals: { users: @users })
       ]
     end
   end

@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   root 'users#index'
-  resources :users, only: %i[index edit update new create]
+  resources :users, only: %i[index edit update new create destroy]
 end
