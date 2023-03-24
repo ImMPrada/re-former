@@ -1,0 +1,7 @@
+<div class="border border-red-400 p-2 rounded round-4 bg-red-100 text-red-400">
+  There are some errors:
+  <ul>
+    <% errors_messages.each do |msg| %>
+      <li class="block pl-2">* <%= msg %></li>
+    <% end %>
+</div>
