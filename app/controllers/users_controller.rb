@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(user_id)
 
     if @user.update(user_params)
-      respond_to { |format| replace_user(format) }
+      respond_to { |format| update_user(format) }
     else
       respond_to { |format| errors_notice(format, @user.errors.full_messages) }
     end
@@ -52,20 +52,18 @@ class UsersController < ApplicationController
   def errors_notice(format, errors_messages)
     format.turbo_stream do
       render turbo_stream: [
-        turbo_stream.update(:errors_notification,
+        turbo_stream.update(:notice,
                             partial: 'errors',
                             locals: { errors_messages: })
       ]
     end
   end
 
-  def replace_user(format)
+  def update_user(format)
     format.turbo_stream do
       render turbo_stream: [
-        turbo_stream.replace(@user,
-                             partial: 'user',
-                             locals: { user: @user }),
-        turbo_stream.remove(:errors_notification)
+        turbo_stream.replace(@user, partial: 'user', locals: { user: @user }),
+        turbo_stream.update(:notice, partial: 'success')
       ]
     end
     format.html { redirect_to users_path, notice: 'User was successfully updated.' }

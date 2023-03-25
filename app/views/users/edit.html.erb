@@ -1,12 +1,13 @@
-<div class="w-3/5 flex flex-col mx-auto">
-  <h1 class="min-w-full">Edit user</h1>
+<div class="min-w-full">
+  <h1>Edit user</h1>
 
   <turbo-frame id="<%= dom_id @user %>">
-    <div id="errors_notification"></div>
+    <div class="min-w-2/5 flex flex-col mx-auto">
 
-    <%= form_with(model: @user, class: "min-w-full") do |f|%>
-      <%= render partial: 'form_fields', locals: { f: f } %>
-      <%= f.submit 'Update user account', { class: 'btn-goahead mt-4'} %>
-    <% end %>
+      <%= form_with(model: @user, class: "min-w-full") do |f|%>
+        <%= render partial: 'form_fields', locals: { f: f } %>
+        <%= f.submit 'Update user account', { class: 'btn-goahead mt-4'} %>
+      <% end %>
+    </div>
   </turbo-frame>
 </div>
