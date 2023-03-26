@@ -1,0 +1,27 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 15
+
+Metrics/MethodLength:
+  Max: 18
+
+RSpec/NestedGroups:
+  Max: 5
