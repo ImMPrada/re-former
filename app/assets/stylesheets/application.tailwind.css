@@ -9,5 +9,5 @@
   }
   .btn-goahead {
     @apply btn bg-green-100 min-w-full text-green-800;
-}
+  }
 }

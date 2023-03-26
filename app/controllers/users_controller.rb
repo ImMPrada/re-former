@@ -23,6 +23,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(user_id)
+  rescue ActiveRecord::RecordNotFound
+    remove_unexisting_user_frame
   end
 
   def update
@@ -38,12 +40,10 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(user_id)
 
+    @user.destroy
     respond_to do |format|
-      if @user.destroy
-        remove_user(format)
-      else
-        format.html { redirect_to users_path }
-      end
+      remove_user(format)
+      format.html { redirect_to users_path, notice: 'Users updated' }
     end
   end
 
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     else
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.remove(@user)
+          turbo_stream.remove(@user), turbo_stream.update(:notice, partial: 'success')
         ]
       end
     end
@@ -91,6 +91,15 @@ class UsersController < ApplicationController
                              locals: { users: @users })
       ]
     end
+  end
+
+  def remove_unexisting_user_frame
+    render turbo_stream: [
+      turbo_stream.remove("user_#{user_id}".to_sym),
+      turbo_stream.update(:notice,
+                          partial: 'errors',
+                          locals: { errors_messages: ['User did not exist, index updated'] })
+    ]
   end
 
   def user_params
