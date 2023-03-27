@@ -25,7 +25,7 @@
 - run migrations
 `rails db:migrate`
 
-- if you want you can popullate the database with seed
+- if you want you can populate the database with seed
 `rails db:seed`
 
 - run the server
