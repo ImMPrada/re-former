@@ -1,0 +1,6 @@
+<div id="users_list" class="my-4">
+  <% if @users.empty? %>
+    <h2 class="text-l pt-8 text-red-500">THERE ARE NO USERS</h2>
+  <% end %>
+  <%= render @users %>
+</div>

@@ -1,0 +1,18 @@
+<turbo-frame id="<%= dom_id user %>" class="min-w-full flex justify-between items-center">
+  <div>
+    <%= user.username %>
+    </br>
+    <%= user.email %>
+  </div>
+  <div>
+    <%= link_to "Edit", edit_user_path(user),
+              class: "btn bg-gray-100"
+    %>
+    <%= button_to "Delete",
+                user_path(user),
+                method: :delete,
+                data: { "turbo-frame": "_top" },
+                class: "btn bg-red-100"
+    %>
+  </div>
+</turbo-frame>

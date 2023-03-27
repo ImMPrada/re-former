@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## install
 
-* Ruby version
+- clone the repo
+`git clone https://github.com/ImMPrada/re-former.git`
 
-* System dependencies
+- move to the repo folder
+`cd re-former`
 
-* Configuration
 
-* Database creation
+- you need Ruby 3.1.2, if you have rbenv
+`rbenv install 3.1.2` if you don't have ruby 3.1.2 installed
 
-* Database initialization
+- install gems
+`bundle intall`
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## how to try it
 
-* Deployment instructions
+- create the database
+`rails db:create`
 
-* ...
+- run migrations
+`rails db:migrate`
+
+- if you want you can populate the database with seed
+`rails db:seed`
+
+- run the server
+`rails s`
+
+- try it
